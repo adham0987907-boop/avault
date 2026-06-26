@@ -1,0 +1,15 @@
+.gradle/
+/build/
+android/local.properties
+android/key.properties
+android/app/src/main/res/raw/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+__mac_only/
+.DS_Store
+*.hive
+*.lock
