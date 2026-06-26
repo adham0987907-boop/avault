@@ -1,0 +1,28 @@
+workflows:
+  android-apk-workflow:
+    name: AVault Android APK Production Build
+    max_build_duration: 30
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      android_signing:
+        key_store_credential_id: null
+    triggering:
+      events:
+        - push
+      branches:
+        - main
+        - master
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "flutter.sdk=$FLUTTER_ROOT" > android/local.properties
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build Android APK (Release)
+        script: |
+          flutter build apk --release --no-tree-shake-icons
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      
